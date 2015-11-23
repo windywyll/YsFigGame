@@ -4,25 +4,27 @@ using System.Collections;
 
 public class PlayerManager : MonoBehaviour
 {
-    private float mLife;
-    private float mMana;
-    private float mExperience;
-    private List<Spell> mSpells;
-     
-	void Start ()
+    private Player mPlayer1;
+    private Player mPlayer2;
+
+    void Start ()
     {
         DontDestroyOnLoad(this);
-
-        mSpells = new List<Spell>();
-        mExperience = 0;
-
-        //A voir avec les GD
-        mLife = 0;
-        mMana = 0;
+        mPlayer1 = new Player();
+        mPlayer2 = new Player();
     }
-	
-	void Update ()
+
+    void Update ()
     {
 	
 	}
+
+    public static void movePlayer1(Vector2 move)
+    {
+
+    }
+    public static void movePlayer2(Vector2 move)
+    {
+
+    }
 }

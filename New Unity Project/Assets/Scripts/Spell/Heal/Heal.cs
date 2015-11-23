@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Heal : Spell
+public abstract class Heal : Spell
 {
-    
-	void Start ()
+    private float mLifeRestored;
+
+    void Start ()
     {
 	
 	}

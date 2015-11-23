@@ -1,10 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Attack : Spell
+public enum Shape
 {
-    
-	void Start ()
+    AOE,
+    Cone,
+    Bullet,
+    Lazer
+}
+
+public abstract class Attack : Spell
+{
+    private Shape mShape;
+    private float mDamage;
+    private float mRange;
+
+    void Start ()
     {
 	
 	}
