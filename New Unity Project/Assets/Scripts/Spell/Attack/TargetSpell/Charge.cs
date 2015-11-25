@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Uppercut : MonoBehaviour {
+public class Charge : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

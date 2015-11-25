@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bolas : MonoBehaviour {
+public class BlastSpell : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

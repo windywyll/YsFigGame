@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Blast : Attack
+public abstract class LineSpell : Attack
 {
-    public Blast()
+    public LineSpell()
     {
         mShape = Shape.Line;
     }
-    	
-	void Update ()
-    {
-	
-	}
 }

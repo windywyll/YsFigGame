@@ -7,7 +7,7 @@ public enum Shape
     Cone,
     Line,
     Ring,
-    Player,
+    Target,
     Circle,
     Cross
 }

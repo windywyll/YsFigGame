@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Teleportation : MonoBehaviour {
+public class Minor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -32,13 +32,13 @@ public class PlayerManager : MonoBehaviour
         mPlayer2.transform.position = targetPosition;
     }
 
-    /*private void buildPlayer1(List<Spell> spellsChoosen)
+    private void buildPlayer1(List<Spell> spellsChoosen)
     {
-        return 0;
+        mPlayer1.buildAsTank();
     }
 
     private void buildPlayer2(List<Spell> spellsChoosen)
     {
-        return 0;
-    }*/
+        mPlayer2.buildAsMage();
+    }
 }
