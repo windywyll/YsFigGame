@@ -49,8 +49,16 @@ public class Joystick
         return mIDFinger;
     }
 
-    public void getInput(Touch touch)
+    public int getInput(Touch touch)
     {
-        //Envoie Input;
+        if(touch.phase == TouchPhase.Ended)
+        {
+            desactiveJoystick();
+        }
+        else
+        {
+            //Envoie Input;
+        }
+        return mIDFinger;
     }
 }

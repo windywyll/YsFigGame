@@ -4,6 +4,10 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    private Breed mBreed;
+    private Job mJob;
+
+    private string mName;
     private float mLife;
     private float mMana;
     private float mSpeed;
@@ -20,12 +24,14 @@ public class Player : MonoBehaviour
 
     public Player()
     {
+        mSpeed = 0.1f;
         mSpells = new List<Spell>();
+        mItems = new List<Item>();
         mExperience = 0;
-
-        //A voir avec les GD
-        mLife = 0;
-        mMana = 0;
     }
 
+    public float getSpeed()
+    {
+        return mSpeed;
+    }
 }

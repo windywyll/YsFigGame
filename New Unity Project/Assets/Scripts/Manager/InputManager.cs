@@ -4,68 +4,94 @@ using System;
 
 public class InputManager : MonoBehaviour
 {
-    /**
-     * Recupere les touches aux clavier lorsque la plateforme d'execution est IOS, ANDROID ou WINDOWS PHONE 8.1
-     * Le Update va vérifier qu'il y ai au moins un touch en cours, si c'est le cas, il va lancer le traitement
-     * de cet input.
-     * Nous traitons uniquement le monoTouch, la premiere case du tableau "touch" contient le premier touch
-     * effectué par le joueur.
-     * La position du premier touch est envoyé au GameManager si nous sommes dans la scene Level.
-     */
-#if UNITY_ANDROID || UNITY_IOS || UNITY_WP8_1
-
     private Touch[] touches;
 
-    private Joystick joystickPlayer1 = new Joystick(new Vector3(Screen.width * 5 / 6, Screen.width * 5 / 6, 0)
-                                                    , Screen.width * 1 / 6);
-    private Joystick joystickPlayer2 = new Joystick(new Vector3(Screen.width * 1 / 6, Screen.height - Screen.width * 1 / 6, 0)
-                                                    , Screen.width * 1 / 6);
-    private int IDJoystick1 = -1;
-    private int IDJoystick2 = -1;
-    private bool joystick1Activ = false;
-    private bool joystick2Activ = false;
+    private PlayerManager playerManager;
+
+    private int fingerIDPlayer1 = -1;
+    private int fingerIDPlayer2 = -1;
+    private bool startDid = false;
 
     void Start()
     {
         DontDestroyOnLoad(this);
+        playerManager = this.gameObject.GetComponent<PlayerManager>();
     }
 
     void Update()
     {
+        Debug.Log("Begin InputManager");
+
         touches = Input.touches;
 
-
-        if (touches.Length < 1)
+        if(!allPlayersTouching())
         {
-            return;
+            assignNewId();
         }
-        foreach(Touch touch in touches)
+
+#if UNITY_EDITOR
+        Debug.Log("testo");
+        if (Input.GetMouseButton(0))
         {
-            if(!joystickPlayer1.isActiv())
+            Vector2 mousPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            playerManager.movePlayer1(mousPos);
+        }
+
+#endif
+
+        foreach (Touch touch in touches)
+        {
+            Debug.Log("ForEach");
+            if (touch.phase == TouchPhase.Ended)
             {
-                IDJoystick1 = joystickPlayer1.activJoystickAndGetIDIfInRange(touch);
+                reinitIDPlayer(touch);
             }
             else
             {
-                if(IDJoystick1 == touch.fingerId)
+                if (touch.fingerId == fingerIDPlayer1)
                 {
-                    joystickPlayer1.getInput(touch);
+                    playerManager.movePlayer1(touch.position);
                 }
-            }
-            if (!joystickPlayer2.isActiv())
-            {
-                IDJoystick2 = joystickPlayer2.activJoystickAndGetIDIfInRange(touch);
-            }
-            else
-            {
-                if (IDJoystick2 == touch.fingerId)
+                /*else if (touch.fingerId == fingerIDPlayer2)
                 {
-                    joystickPlayer2.getInput(touch);
-                }
+                    playerManager.movePlayer2(touch.position);
+                }*/
             }
         }
     }
 
-    
-#endif
+    private void reinitIDPlayer(Touch touch)
+    {
+        if (touch.fingerId == fingerIDPlayer1)
+        {
+            fingerIDPlayer1 = -1;
+        }
+        else if (touch.fingerId == fingerIDPlayer2)
+        {
+            fingerIDPlayer2 = -1;
+        }
+    }
+
+    private bool allPlayersTouching()
+    {
+        return fingerIDPlayer1 != -1 && fingerIDPlayer2 != -1;
+    }
+
+    private void assignNewId()
+    {
+        if(fingerIDPlayer1 == -1)
+        {
+            fingerIDPlayer1 = playerManager.getIDTouchInRangePlayer1(touches);
+        }
+        if(fingerIDPlayer2 == -1)
+        {
+            fingerIDPlayer2 = playerManager.getIDTouchInRangePlayer2(touches);
+        }
+    }
+
+    private void getFirstIDFinger()
+    {
+        fingerIDPlayer1 = playerManager.getIDTouchInRangePlayer1(touches);
+        fingerIDPlayer2 = playerManager.getIDTouchInRangePlayer2(touches);
+    }
 }

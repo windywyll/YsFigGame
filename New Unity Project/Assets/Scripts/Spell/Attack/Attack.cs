@@ -5,23 +5,17 @@ public enum Shape
 {
     AOE,
     Cone,
-    Bullet,
-    Lazer
+    Line,
+    Ring,
+    Player,
+    Circle,
+    Cross
 }
 
 public abstract class Attack : Spell
 {
-    private Shape mShape;
-    private float mDamage;
-    private float mRange;
-
-    void Start ()
-    {
-	
-	}
-	
-	void Update ()
-    {
-	
-	}
+    internal Shape mShape;
+    internal float mDamage;
+    internal float mRange;
+    internal float mAngle;
 }
