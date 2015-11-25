@@ -22,13 +22,18 @@ public class PlayerManager : MonoBehaviour
     {
         targetPosition = hit.point;
         targetPosition.y = -1f;
+
+        mPlayer1.transform.LookAt(targetPosition);
         mPlayer1.transform.position = targetPosition;
+
     }
     
     public void movePlayer2(Vector3 targetPosition, RaycastHit hit)
     {
         targetPosition = hit.point;
         targetPosition.y = -1f;
+
+        mPlayer2.transform.LookAt(targetPosition);
         mPlayer2.transform.position = targetPosition;
     }
 
