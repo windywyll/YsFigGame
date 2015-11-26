@@ -3,15 +3,8 @@ using System.Collections;
 
 public abstract class Heal : Spell
 {
-    private float mLifeRestored;
-
-    void Start ()
+    public Heal(Player caster) : base(caster)
     {
-	
-	}
-	
-	void Update ()
-    {
-	
-	}
+        mType = Type.Heal;
+    }
 }

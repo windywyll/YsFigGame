@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public  Player mPlayer2;
     private  Collider colliderPlayer2;
 
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(this);
         colliderPlayer1 = mPlayer1.GetComponent<Collider>();
@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
     public void movePlayer1(Vector3 targetPosition, RaycastHit hit)
     {
         targetPosition = hit.point;
-        targetPosition.y = -1f;
+        targetPosition.y = 0.8f;
 
         mPlayer1.transform.LookAt(targetPosition);
         mPlayer1.transform.position = targetPosition;
@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     public void movePlayer2(Vector3 targetPosition, RaycastHit hit)
     {
         targetPosition = hit.point;
-        targetPosition.y = -1f;
+        targetPosition.y = 0.8f;
 
         mPlayer2.transform.LookAt(targetPosition);
         mPlayer2.transform.position = targetPosition;
@@ -45,5 +45,15 @@ public class PlayerManager : MonoBehaviour
     private void buildPlayer2(List<Spell> spellsChoosen)
     {
         mPlayer2.buildAsMage();
+    }
+
+    internal void player1CastSpell(int nbSpell)
+    {
+        mPlayer1.cast(nbSpell);
+    }
+
+    internal void player2CastSpell(int nbSpell)
+    {
+        mPlayer2.cast(nbSpell);
     }
 }

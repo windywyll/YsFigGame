@@ -8,11 +8,10 @@ public class InputManager : MonoBehaviour
 
     private PlayerManager playerManager;
 
-    private int fingerIDPlayer1 = -1;
-    private int fingerIDPlayer2 = -1;
-    private bool startDid = false;
+    private bool player1Moving = false;
+    private bool player2Moving = false;
 
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(this);
         playerManager = this.gameObject.GetComponent<PlayerManager>();
@@ -36,14 +35,50 @@ public class InputManager : MonoBehaviour
                 {
                     if(playerManager.mPlayer1.gameObject == hit.transform.gameObject)
                     {
+                        player1Moving = true;
                         playerManager.movePlayer1(targetPosition, hit);
                     }
                     if (playerManager.mPlayer2.gameObject == hit.transform.gameObject)
                     {
+                        player2Moving = true;
                         playerManager.movePlayer2(targetPosition, hit);
                     }
                 }
             }
+
         }
+    }
+
+    public void onClickPlayer1Spell1()
+    {
+        playerManager.player1CastSpell(1);
+    }
+    public void onClickPlayer1Spell2()
+    {
+        playerManager.player1CastSpell(2);
+    }
+    public void onClickPlayer1Spell3()
+    {
+        playerManager.player1CastSpell(3);
+    }
+    public void onClickPlayer1Spell4()
+    {
+        playerManager.player1CastSpell(4);
+    }
+    public void onClickPlayer2Spell1()
+    {
+        playerManager.player2CastSpell(1);
+    }
+    public void onClickPlayer2Spell2()
+    {
+        playerManager.player2CastSpell(2);
+    }
+    public void onClickPlayer2Spell3()
+    {
+        playerManager.player2CastSpell(3);
+    }
+    public void onClickPlayer2Spell4()
+    {
+        playerManager.player2CastSpell(4);
     }
 }
