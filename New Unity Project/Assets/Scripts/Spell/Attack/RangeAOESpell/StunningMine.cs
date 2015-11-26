@@ -7,6 +7,7 @@ public class StunningMine : AOE
 
     public StunningMine (Player caster) : base(caster)
     {
+        mName = "StunningMine";
         mDamage = 2;
         mCoolDown = 15;
         mAngle = 0;

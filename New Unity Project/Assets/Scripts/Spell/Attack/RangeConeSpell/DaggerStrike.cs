@@ -5,7 +5,7 @@ public class DaggerStrike : Cone
 {
     public DaggerStrike (Player caster) : base(caster)
     {
-        //bat les steaks
+        mName = "DaggerStrike";
         mDamage = 15;
         mCoolDown = 10;
         mRange = 2;

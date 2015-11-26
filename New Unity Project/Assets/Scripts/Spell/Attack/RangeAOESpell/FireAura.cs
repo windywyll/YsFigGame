@@ -6,6 +6,7 @@ public class FireAura : AOE {
 
     public FireAura(Player caster) : base(caster)
     {
+        mName = "FireAura";
         mDuration = 3;
         mDamage = 7;
         mCoolDown = 5;

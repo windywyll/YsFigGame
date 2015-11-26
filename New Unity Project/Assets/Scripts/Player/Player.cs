@@ -97,35 +97,65 @@ public class Player : MonoBehaviour
         switch (castSpell.mShape)
         {
             case Shape.AOE:
-                instanceSpell = (GameObject) Instantiate(mAOEShape, transform.position, transform.rotation);
-                mAOEShape.transform.localScale.Set(castSpell.mRange, 0.01f, castSpell.mRange);
-                
+                instanceSpell = Instantiate(mAOEShape, transform.position, transform.rotation) as GameObject;
+                instanceSpell.transform.parent = this.gameObject.transform;
+                instanceSpell.transform.localScale.Set(castSpell.mRange, 0.01f, castSpell.mRange);
+                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);                
                 break;
             case Shape.Circle:
-                Instantiate(mCircleShape, transform.position, transform.rotation);
-                mCircleShape.transform.position = transform.position + transform.position.normalized*castSpell.mRange;
-                mCircleShape.transform.localScale.Set(((Circle)castSpell).mSizeAOE, 0.01f, ((Circle)castSpell).mSizeAOE);
+                instanceSpell = Instantiate(mCircleShape, transform.position, transform.rotation) as GameObject;
+                instanceSpell.transform.parent = this.gameObject.transform;
+                instanceSpell.transform.position = transform.position + transform.position.normalized*castSpell.mRange;
+                instanceSpell.transform.localScale.Set(((Circle)castSpell).mSizeAOE, 0.01f, ((Circle)castSpell).mSizeAOE);
+                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
                 break;
             case Shape.Cone:
-                Instantiate(mConeShape, transform.position, transform.rotation);
-                mConeShape.transform.localScale.Set(castSpell.mRange, 0.01f, castSpell.mRange);
+                instanceSpell = Instantiate(mConeShape, transform.position, transform.rotation) as GameObject;
+                instanceSpell.transform.parent = this.gameObject.transform;
+                instanceSpell.transform.localScale.Set(castSpell.mRange, 0.01f, castSpell.mRange);
+                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
                 break;
             case Shape.Cross:
-                Instantiate(mCrossShape, transform.position, transform.rotation);
-                Transform onZ = mCrossShape.transform.FindChild("onZ");
-                Transform onX = mCrossShape.transform.FindChild("onX");
+                instanceSpell = Instantiate(mCrossShape, transform.position, transform.rotation) as GameObject;
+                instanceSpell.transform.parent = this.gameObject.transform;
+                Transform onZ = instanceSpell.transform.FindChild("onZ");
+                Transform onX = instanceSpell.transform.FindChild("onX");
                 onX.localScale.Set(castSpell.mRange, 0.01f, 0.01f);
                 onZ.localScale.Set(0.01f, 0.01f, castSpell.mRange);
+                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
                 break;
             case Shape.Line:
-                Instantiate(mLineShape, transform.position, transform.rotation);
-                mLineShape.transform.localScale.Set(0.5f, 0.01f, castSpell.mRange);
-                mLineShape.transform.position += new Vector3(0, 0, castSpell.mRange / 2);
+                instanceSpell = Instantiate(mLineShape, transform.position, transform.rotation) as GameObject;
+                instanceSpell.transform.parent = this.gameObject.transform;
+                instanceSpell.transform.localScale.Set(0.5f, 0.01f, castSpell.mRange);
+                instanceSpell.transform.position += new Vector3(0, 0, castSpell.mRange / 2);
+                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
                 break;
             case Shape.Ring:
-                Instantiate(mRingShape, transform.position, transform.rotation);
-                mRingShape.transform.localScale.Set(castSpell.mRange, 0.01f, castSpell.mRange);
+                instanceSpell = Instantiate(mRingShape, transform.position, transform.rotation) as GameObject;
+                instanceSpell.transform.parent = this.gameObject.transform;
+                instanceSpell.transform.localScale.Set(castSpell.mRange, 0.01f, castSpell.mRange);
+                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
                 break;
+        }
+    }
+
+    public void spellHasHit(string spellHit, Player playerHit)
+    {
+        foreach(Spell spell in mSpells)
+        {
+            if(spellHit == spell.mName)
+            {
+                if( ((Attack)spell).mShape == Shape.Cone)
+                {
+                    spell.applySpell(playerHit);
+                }
+                else
+                {
+                    spell.applySpell(playerHit);
+                }
+                return;
+            }
         }
     }
 

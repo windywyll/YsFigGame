@@ -5,6 +5,7 @@ public class ArrowShoot : Line
 {
     public ArrowShoot(Player caster) : base(caster)
     {
+        mName = "ArrowShoot";
         mDamage = 1;
         mCoolDown = 2;
         mAngle = 0;

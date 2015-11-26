@@ -4,6 +4,7 @@ using System.Collections;
 public class FireBall : Circle { // l'accolade elle t'empapaoute cedric
     public FireBall(Player caster) : base(caster)
     {
+        mName = "FireBall";
         mDamage = 10;
         mCoolDown = 15;
         mRange = 4;

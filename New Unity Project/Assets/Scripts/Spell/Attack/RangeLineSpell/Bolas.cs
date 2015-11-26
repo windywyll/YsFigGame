@@ -6,6 +6,7 @@ public class Bolas : Line
 {
     public Bolas(Player caster) : base(caster)
     {
+        mName = "Bolas";
         mDamage = 0;
         mCoolDown = 15;
         mAngle = 0;

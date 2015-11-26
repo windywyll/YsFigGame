@@ -7,6 +7,7 @@ public class PoisonBomb : Circle
 
     public PoisonBomb(Player caster) : base(caster)
     {
+        mName = "PoisonBomb";
         mDamage = 3;
         mDuration = 5;
         mCoolDown = 20;

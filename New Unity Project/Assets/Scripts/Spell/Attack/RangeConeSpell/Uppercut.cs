@@ -5,6 +5,7 @@ public class Uppercut : Cone
 {
     public Uppercut(Player caster) : base(caster)
     {
+        mName = "Uppercut";
         mDamage = 10;
         mCoolDown = 10;
         mAngle = 30;

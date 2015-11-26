@@ -9,6 +9,7 @@ public enum Type
 
 public class Spell : MonoBehaviour
 {
+    public string mName;
     internal float mCoolDown;
     public Type mType;
     private Player mCaster;

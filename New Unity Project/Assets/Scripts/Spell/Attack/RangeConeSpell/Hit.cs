@@ -5,6 +5,7 @@ public class Hit : Cone
 {
     public Hit(Player caster) : base(caster)
     {
+        mName = "Hit";
         mDamage = 4;
         mCoolDown = 1.5f;
         mAngle = 30;

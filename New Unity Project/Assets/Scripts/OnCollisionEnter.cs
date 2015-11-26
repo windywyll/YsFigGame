@@ -3,6 +3,8 @@ using System.Collections;
 
 public class OnCollisionEnter : MonoBehaviour
 {
+    private string mNameSpell;
+
     public void onTriggerEnter(Collider other)
     {
         Player player = other.gameObject.GetComponent<Player>();
@@ -10,5 +12,12 @@ public class OnCollisionEnter : MonoBehaviour
         {
             return;
         }
+
+        this.gameObject.transform.parent.gameObject.GetComponent<Player>().spellHasHit(mNameSpell, player);
+    }
+
+    public void setNameSpell(string spell)
+    {
+        mNameSpell = spell;
     }
 }
