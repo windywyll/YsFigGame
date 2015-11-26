@@ -43,11 +43,7 @@ public class Player : MonoBehaviour
     private float mExperience;
     private float mLevel;
 
-    private float mBasicPhysicAttack;
-    private float mBasicMagicAttack;
-
-    private float mBasicPhysicResistance;
-    private float mBasicMagicResistance;
+    private float mBasicDamage;
 
     private List<Spell> mSpells;
     private List<Item> mItems;
@@ -59,11 +55,7 @@ public class Player : MonoBehaviour
         mExperience = 0;
         mLevel = 0;
 
-        mBasicPhysicAttack = 5;
-        mBasicMagicAttack = 5;
-
-        mBasicPhysicResistance = 0;
-        mBasicMagicResistance = 0;
+        mBasicDamage = 5;
 
         mSpells = new List<Spell>();
         mItems = new List<Item>();
@@ -139,7 +131,7 @@ public class Player : MonoBehaviour
 
     public float getSpeed()
     {
-        return mSpeed;
+        return mSpeed + mBreed.getSpeed() + mJob.getSpeed();
     }
 
     public void setSpeed(float speed)
