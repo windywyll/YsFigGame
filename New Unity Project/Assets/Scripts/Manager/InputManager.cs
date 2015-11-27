@@ -8,8 +8,8 @@ public class InputManager : MonoBehaviour
 
     private PlayerManager playerManager;
 
-    private bool player1Moving = false;
-    private bool player2Moving = false;
+    //private bool player1Moving = false;
+    //private bool player2Moving = false;
 
     void Awake()
     {
@@ -33,12 +33,12 @@ public class InputManager : MonoBehaviour
                 {
                     if(playerManager.mPlayer1.gameObject == hit.transform.gameObject)
                     {
-                        player1Moving = true;
+                        //player1Moving = true;
                         playerManager.movePlayer1(targetPosition, hit);
                     }
                     if (playerManager.mPlayer2.gameObject == hit.transform.gameObject)
                     {
-                        player2Moving = true;
+                        //player2Moving = true;
                         playerManager.movePlayer2(targetPosition, hit);
                     }
                 }

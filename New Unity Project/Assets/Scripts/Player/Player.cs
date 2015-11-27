@@ -158,7 +158,8 @@ public class Player : MonoBehaviour
                 instanceSpell = Instantiate(mAOEShape, transform.position, transform.rotation) as GameObject;
                 instanceSpell.transform.parent = this.gameObject.transform;
                 instanceSpell.transform.localScale = new Vector3(castSpell.mRange, 0.01f, castSpell.mRange);
-                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
+                instanceSpell.transform.rotation = new Quaternion(instanceSpell.transform.rotation.x, instanceSpell.transform.rotation.y + 90, instanceSpell.transform.rotation.z, instanceSpell.transform.rotation.w);
+                //instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
 
                 listFX = mDictionaryFX.getValueFromKey(castSpell.mName);
 
@@ -176,7 +177,7 @@ public class Player : MonoBehaviour
                 instanceSpell.transform.parent = this.gameObject.transform;
                 instanceSpell.transform.Translate(0, 0, castSpell.mRange);
                 instanceSpell.transform.localScale = new Vector3(((Circle)castSpell).mSizeAOE, 0.01f, ((Circle)castSpell).mSizeAOE);
-                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
+                instanceSpell.GetComponent<OnCollisionEnterCircle>().setNameSpell(castSpell.mName);
 
                 listFX = mDictionaryFX.getValueFromKey(castSpell.mName);
 
@@ -193,7 +194,7 @@ public class Player : MonoBehaviour
                         instanceFx = Instantiate(fx, transform.position, transform.rotation) as GameObject;
                         instanceFx.transform.parent = instanceSpell.gameObject.transform;
                         ((Circle)castSpell).targetFX = instanceSpell.transform.position;
-                        ((Circle)castSpell).mStep = (((Circle)castSpell).targetFX - this.gameObject.transform.position) / castSpell.mTimeLifeSpell;
+                        ((Circle)castSpell).mStep = (((Circle)castSpell).targetFX - this.gameObject.transform.position) / (castSpell.mTimeLifeSpell*0.90f);
                     }
                 }
 
@@ -204,7 +205,7 @@ public class Player : MonoBehaviour
                 instanceSpell.transform.localScale = new Vector3(castSpell.mRange, 0.01f, castSpell.mRange);
                 instanceSpell.transform.Rotate(0, 180, 0);
                 instanceSpell.transform.Translate(0, 0, -3 * castSpell.mRange);
-                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
+                //instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
 
                 listFX = mDictionaryFX.getValueFromKey(castSpell.mName);
 
@@ -224,7 +225,7 @@ public class Player : MonoBehaviour
                 Transform onX = instanceSpell.transform.FindChild("onX");
                 onX.localScale.Set(castSpell.mRange, 0.01f, 0.01f);
                 onZ.localScale.Set(0.01f, 0.01f, castSpell.mRange);
-                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
+                //instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
                 break;
             case Shape.Line:
                 instanceSpell = Instantiate(mLineShape, transform.position, transform.rotation) as GameObject;
@@ -232,7 +233,7 @@ public class Player : MonoBehaviour
                 instanceSpell.transform.localScale = new Vector3(0.5f, 0.01f, castSpell.mRange);
                 instanceSpell.transform.Translate(new Vector3(0, 0, castSpell.mRange));
 
-                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
+                instanceSpell.GetComponent<OnCollisionEnterLine>().setNameSpell(castSpell.mName);
 
                 listFX = mDictionaryFX.getValueFromKey(castSpell.mName);
 
@@ -249,7 +250,7 @@ public class Player : MonoBehaviour
                 instanceSpell = Instantiate(mRingShape, transform.position, transform.rotation) as GameObject;
                 instanceSpell.transform.parent = this.gameObject.transform;
                 instanceSpell.transform.localScale.Set(castSpell.mRange, 0.01f, castSpell.mRange);
-                instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
+                //instanceSpell.GetComponent<OnCollisionEnter>().setNameSpell(castSpell.mName);
 
                 listFX = mDictionaryFX.getValueFromKey(castSpell.mName);
 
