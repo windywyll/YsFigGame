@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static Dictionary<Spell, GameObject> mSpellsInScene;
     private DictionaryFX mDictionaryFX;
+    private bool mExplosionDid = false;
 
     void Awake()
     {
@@ -22,29 +23,31 @@ public class GameManager : MonoBehaviour
                 Transform instanceFireBall = spell.Value.transform.GetChild(0);
                 GameObject instanceExplosion;
                 Vector3 deplacement = ((Circle)spell.Key).mStep * Time.deltaTime;
+                deplacement.y = 0;
                 instanceFireBall.position += deplacement;
-                Debug.Log(instanceFireBall.position);
 
-                if (instanceFireBall.position.x - spell.Value.transform.position.x < 0.1f)
+                if (spell.Value.transform.position.z - instanceFireBall.position.z < 0.1f)
                 {
                     List<GameObject> fireBallFx = mDictionaryFX.getValueFromKey("FireBall");
-                    Debug.Log(instanceFireBall.position);
 
                     foreach (GameObject fx in fireBallFx)
                     {
-                        if (fx.name == "Explosion")
+                        if (!mExplosionDid && fx.name == "Explosion")
                         {
-                            Debug.Log(instanceFireBall.position);
-                            spell.Value.transform.localScale = new Vector3(((Circle)spell.Key).mSizeAOE, 0.01f, ((Circle)spell.Key).mSizeAOE);
+                            mExplosionDid = true;
+                            spell.Value.transform.position += new Vector3(0, 0.9f, 0);
                             instanceExplosion = Instantiate(fx, instanceFireBall.position, instanceFireBall.rotation) as GameObject;
                             instanceExplosion.transform.parent = spell.Value.gameObject.transform;
                         }
                     }
-
                 }
             }
             if (((Attack)spell.Key).mTimeLifeSpell + spell.Key.timeStart < Time.time)
             {
+                if(spell.Value.name == "Explosion")
+                {
+                    mExplosionDid = false;
+                }
                 Destroy(spell.Value);
                 mSpellsInScene.Remove(spell.Key);
                 return;

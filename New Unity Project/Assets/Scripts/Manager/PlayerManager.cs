@@ -60,7 +60,8 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-
+        Debug.Log("player 1 :  " + mPlayer1.getLife());
+        Debug.Log("player 2 :  " + mPlayer2.getLife());
         if (mPlayer1.getState() == State.Death)
         {
             winner = 2;
