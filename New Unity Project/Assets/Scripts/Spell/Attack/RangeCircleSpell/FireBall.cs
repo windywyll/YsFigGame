@@ -8,7 +8,7 @@ public class FireBall : Circle
     {
         mName = "FireBall";
         mDamage = 10;
-        mCoolDown = 15;
+        mCoolDown = 5;
         mRange = 4;
         mAngle = 0;
         timeStart = -mCoolDown;
