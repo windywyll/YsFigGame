@@ -6,7 +6,9 @@ public class MinorHeal : Heal
 {
     public MinorHeal(Player caster) : base(caster)
     {
-
+        mCoolDown = 25;
+        timeStart = -mCoolDown;
+        mName = "MinorHeal";
     }
 
     public override void applySpell(Player target)

@@ -11,6 +11,8 @@ public class Bolas : Line
         mCoolDown = 15;
         mAngle = 0;
         mRange = 4;
+        timeStart = -mCoolDown;
+        mTimeLifeSpell = 0.5f;
     }
 
     public override void applySpell(Player target)

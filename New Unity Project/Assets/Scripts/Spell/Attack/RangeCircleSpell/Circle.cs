@@ -7,7 +7,7 @@ public abstract class Circle : Attack
 
     public Circle(Player caster) : base(caster)
     {
-        mSizeAOE = 1;
+        mSizeAOE = 2;
         mShape = Shape.Circle;
     }
 }

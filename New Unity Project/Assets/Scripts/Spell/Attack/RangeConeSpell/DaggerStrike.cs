@@ -10,6 +10,8 @@ public class DaggerStrike : Cone
         mCoolDown = 10;
         mRange = 2;
         mAngle = 30;
+        timeStart = -mCoolDown;
+        mTimeLifeSpell = 0.5f;
     }
 
     public override void applySpell(Player target)

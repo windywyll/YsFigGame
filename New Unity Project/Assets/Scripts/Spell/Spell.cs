@@ -7,12 +7,13 @@ public enum Type
     Heal
 }
 
-public class Spell : MonoBehaviour
+public class Spell
 {
     public string mName;
     internal float mCoolDown;
     public Type mType;
-    private Player mCaster;
+    internal Player mCaster;
+    public float timeStart;
 
     public Spell(Player caster)
     {
@@ -20,4 +21,9 @@ public class Spell : MonoBehaviour
     }
 
     public virtual void applySpell(Player target){}
+
+    public void spellCast()
+    {
+        timeStart = Time.time;
+    }
 }

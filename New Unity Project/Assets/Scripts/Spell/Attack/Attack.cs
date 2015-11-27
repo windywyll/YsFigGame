@@ -17,6 +17,7 @@ public class Attack : Spell
     internal float mDamage;
     internal float mRange;
     internal float mAngle;
+    public float mTimeLifeSpell;
 
     public Attack(Player caster) : base(caster)
     {
@@ -25,6 +26,8 @@ public class Attack : Spell
 
     public override void applySpell(Player target)
     {
-        target.damage(mDamage);
+        if (mCaster == target)
+            return;
+        target.damage(mDamage + mCaster.getDamage());
     }
 }

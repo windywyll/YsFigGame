@@ -10,6 +10,8 @@ public class Uppercut : Cone
         mCoolDown = 10;
         mAngle = 30;
         mRange = 2;
+        timeStart = -mCoolDown;
+        mTimeLifeSpell = 0.5f;
     }
 
     public override void applySpell(Player target)

@@ -10,6 +10,8 @@ public class MagicShoot : Line
         mCoolDown = 1.5f;
         mRange = 6;
         mAngle = 0;
+        timeStart = -mCoolDown;
+        mTimeLifeSpell = 0.5f;
     }
 
     public override void applySpell(Player target)

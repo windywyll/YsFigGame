@@ -10,6 +10,8 @@ public class ArrowShoot : Line
         mCoolDown = 2;
         mAngle = 0;
         mRange = 4;
+        timeStart = -mCoolDown;
+        mTimeLifeSpell = 0.5f;
     }
 
     public override void applySpell(Player target)

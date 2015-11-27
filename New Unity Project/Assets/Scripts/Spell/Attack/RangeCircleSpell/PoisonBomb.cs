@@ -13,11 +13,13 @@ public class PoisonBomb : Circle
         mCoolDown = 20;
         mAngle = 0;
         mRange = 4;
+        timeStart = -mCoolDown;
     }
 
     public override void applySpell(Player target)
     {
         base.applySpell(target);
         target.changeState(State.Poison, mDuration);
+        target.mStartTimeState = Time.time;
     }
 }

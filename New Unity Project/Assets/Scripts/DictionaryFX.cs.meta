@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 4ea42eb45f218c943a15638c82e47ca0
+timeCreated: 1448560164
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Aura: {fileID: 177848, guid: 2d59335da58d13847b97782029d4b626, type: 2}
+  - FireBall: {fileID: 142466, guid: 0277fe01b4a97be4a837207a6deb9054, type: 2}
+  - Explosion: {fileID: 163964, guid: 97015d62de77e024c8b1b718d0e4348b, type: 2}
+  - Heal: {fileID: 105388, guid: 76243d489a694d043932755f92f9bff3, type: 2}
+  - MagicShoot: {fileID: 171556, guid: f07a18818a622074ca4c33ebffb1d4f4, type: 2}
+  - Bolas: {fileID: 125114, guid: 359202a19f8ee3448bc304c0db32d0f7, type: 2}
+  - Stun: {fileID: 102474, guid: 33480c30e62059149919f128d7b21e6a, type: 2}
+  - Hit: {fileID: 175170, guid: d805dc847389cd5418d052cd75a17bc1, type: 2}
+  - Uppercut: {fileID: 194522, guid: d4bca1614feffc742993e007367274c9, type: 2}
+  - Sprint: {fileID: 177206, guid: 8331ef2f74b8a194f85de1207161ab7f, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class Breed : MonoBehaviour
+public abstract class Breed
 {
     internal string mName;
     internal float mLife;

@@ -12,6 +12,8 @@ public class FireAura : AOE {
         mCoolDown = 5;
         mRange = 4;
         mAngle = 0;
+        timeStart = -mCoolDown;
+        mTimeLifeSpell = 3;
     }
 
     public override void applySpell(Player target)

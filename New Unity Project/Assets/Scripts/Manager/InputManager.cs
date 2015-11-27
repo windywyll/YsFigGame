@@ -19,8 +19,6 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Begin InputManager");
-
         touches = Input.touches;
 
         foreach (Touch touch in touches)
@@ -45,7 +43,6 @@ public class InputManager : MonoBehaviour
                     }
                 }
             }
-
         }
     }
 
