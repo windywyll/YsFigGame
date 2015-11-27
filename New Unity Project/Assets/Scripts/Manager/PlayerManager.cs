@@ -60,10 +60,6 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("LifePlayer1 : " + mPlayer1.getLife());
-        Debug.Log("LifePlayer2 : " + mPlayer2.getLife());
-        Debug.Log("StatePlayer1 : " + mPlayer1.getState());
-        Debug.Log("StatePlayer2 : " + mPlayer2.getState());
 
         if (mPlayer1.getState() == State.Death)
         {
