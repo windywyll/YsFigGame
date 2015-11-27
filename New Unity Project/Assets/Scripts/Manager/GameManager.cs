@@ -44,10 +44,7 @@ public class GameManager : MonoBehaviour
             }
             if (((Attack)spell.Key).mTimeLifeSpell + spell.Key.timeStart < Time.time)
             {
-                if(spell.Value.name == "Explosion")
-                {
-                    mExplosionDid = false;
-                }
+                mExplosionDid = false;
                 Destroy(spell.Value);
                 mSpellsInScene.Remove(spell.Key);
                 return;
