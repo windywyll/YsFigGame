@@ -164,9 +164,6 @@ public class Player : MonoBehaviour
 
                 if (listFX == null) break;
 
-                Debug.Log(castSpell.mName);
-                Debug.Log(listFX.Count);
-
                 foreach(GameObject fx in listFX)
                 {
                     instanceFx = Instantiate(fx, transform.position, transform.rotation) as GameObject;
@@ -195,6 +192,8 @@ public class Player : MonoBehaviour
                     {
                         instanceFx = Instantiate(fx, transform.position, transform.rotation) as GameObject;
                         instanceFx.transform.parent = instanceSpell.gameObject.transform;
+                        ((Circle)castSpell).targetFX = instanceSpell.transform.position;
+                        ((Circle)castSpell).mStep = (((Circle)castSpell).targetFX - this.gameObject.transform.position) / castSpell.mTimeLifeSpell;
                     }
                 }
 

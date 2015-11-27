@@ -18,7 +18,7 @@ public class DictionaryFX : MonoBehaviour
     public GameObject Uppercut;
     public GameObject Sprint;
 
-    void Start()
+    void Awake()
     {
         List<GameObject> fireAuraFX = new List<GameObject>();
         fireAuraFX.Add(Aura);

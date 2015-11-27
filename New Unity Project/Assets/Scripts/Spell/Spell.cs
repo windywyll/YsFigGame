@@ -7,7 +7,7 @@ public enum Type
     Heal
 }
 
-public class Spell
+public class Spell : MonoBehaviour
 {
     public string mName;
     internal float mCoolDown;

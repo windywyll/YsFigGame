@@ -3,7 +3,6 @@ using System.Collections;
 
 public class FireBall : Circle
 {
-    public float mStep = 0.1f;
 
     public FireBall(Player caster) : base(caster)
     {
@@ -13,7 +12,8 @@ public class FireBall : Circle
         mRange = 4;
         mAngle = 0;
         timeStart = -mCoolDown;
-        mTimeLifeSpell = 2.5f;
+        mTimeLifeSpell = 1.2f;
+        
     }
 
     public override void applySpell(Player target)
